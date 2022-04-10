@@ -1,23 +1,18 @@
-import logo from './logo.svg';
+import { useState } from 'react';
+import CoinFlipper from './components/CoinFlipper';
+import Coin from './components/Coin';
 import './App.css';
 
 function App() {
+  const [coinSide, setCoinSide] = useState('Heads/Tails');
+  const coinChangeHandler = (gotCoinSide) =>{
+    setCoinSide(gotCoinSide);
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Coin Flipper</h1>
+      <Coin coin={coinSide}/>
+      <CoinFlipper onCoinChange={coinChangeHandler}/>
     </div>
   );
 }
